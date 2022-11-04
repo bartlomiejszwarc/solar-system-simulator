@@ -28,11 +28,7 @@
     "astronomy-engine": "^2.1.5",
     "rxjs": "~7.5.0",
     "three": "^0.142.0",
-    "three.interaction-fixed": "^0.2.3",
     "three.interactive": "^1.4.0",
-    "threex": "^1.0.0",
-    "threex-domevents": "^1.0.0",
-    "threex.domevents": "^1.0.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
