@@ -1,0 +1,59 @@
+<div
+  class="flex md:flex-row flex-col bg-black text-white py-4 items-center justify-center"
+>
+  <button
+    class="w-40 m-4 p-[2px] rounded-full bg-gradient-to-r from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50"
+  >
+    <span
+      class="block text-slate-100 text-sm px-4 py-2 rounded-full bg-black font-[Lato]"
+      >Date mode</span
+    >
+  </button>
+
+  <div
+    class="flex flex-col w-full md:w-1/2 items-center py-3 md:py-0 space-y-12 md:space-y-10 md:mx-32"
+  >
+    <p class="font-[Lato]">Simulation speed control</p>
+    <ngx-slider
+      [(value)]="value"
+      [options]="options"
+      (click)="changeSpeed(value)"
+    >
+    </ngx-slider>
+  </div>
+
+  <button
+    class="w-40 m-4 p-[2px] rounded-full bg-gradient-to-l from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50"
+    (click)="orbits()"
+    *ngIf="!orbitTraceFlag"
+  >
+    <span
+      class="block text-slate-100 text-sm px-4 py-2 rounded-full bg-black font-[Lato]"
+      >Show orbits</span
+    >
+  </button>
+  <button
+    class="w-40 m-4 p-[2px] rounded-full bg-gradient-to-l from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50"
+    (click)="orbits()"
+    *ngIf="orbitTraceFlag"
+  >
+    <span
+      class="block text-slate-100 text-sm px-4 py-2 rounded-full bg-black font-[Lato]"
+      >Hide orbits</span
+    >
+  </button>
+</div>
+<app-planet-tile
+  *ngIf="examplePlanetName"
+  englishName="{{ examplePlanetName.englishName }}"
+  massValue="{{ examplePlanetName.massValue }}"
+  massExponent="{{ examplePlanetName.massExponent }}"
+  meanRadius="{{ examplePlanetName.meanRadius }}"
+  averageTemperature="{{ examplePlanetName.avgTemp }}"
+  moons="{{ examplePlanetName.moons }}"
+  sideralRotation="{{ examplePlanetName.sideralRotation }}"
+  perihelion="{{ examplePlanetName.perihelion }}"
+  aphelion="{{ examplePlanetName.aphelion }}"
+  semimajorAxis="{{ examplePlanetName.semimajorAxis }}"
+>
+</app-planet-tile>

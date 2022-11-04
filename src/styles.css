@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Oxygen&display=swap");
+
+.mat-tab-label {
+  color: #bae6fd;
+}
+
+.mat-tab-label-active {
+  border-bottom: 2px solid #bae6fd;
+}
+
+ngx-slider {
+  margin-left: 2rem !important;
+  margin-right: 2rem !important;
+  width: 100% !important;
+}
+.ngx-slider-bar {
+  background-color: #64748b !important;
+}
+.ngx-slider-pointer {
+  background-color: #334155 !important;
+}
+@media only screen and (max-width: 600px) {
+  ngx-slider {
+    width: 90% !important;
+  }
+}
