@@ -20,7 +20,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlanetTileComponent } from './components/planets-tile/planet-tile/planet-tile.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TooltipModule } from 'ng2-tooltip-directive';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -45,7 +44,6 @@ import { MatIconModule } from '@angular/material/icon';
     HttpClientModule,
     MatTooltipModule,
     BrowserAnimationsModule,
-    TooltipModule,
     MatTabsModule,
     MatIconModule,
   ],

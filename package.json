@@ -26,7 +26,6 @@
     "@syncfusion/ej2-angular-popups": "^20.3.50",
     "@types/webpack-env": "^1.18.0",
     "astronomy-engine": "^2.1.5",
-    "ng2-tooltip-directive": "^2.10.3",
     "rxjs": "~7.5.0",
     "three": "^0.142.0",
     "three.interaction-fixed": "^0.2.3",
