@@ -4,3 +4,7 @@
   right: 5%;
   width: 400px;
 }
+
+img {
+  transform: scale(70%);
+}

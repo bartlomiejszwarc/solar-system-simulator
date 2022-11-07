@@ -3,6 +3,7 @@
 >
   <button
     class="w-40 m-4 p-[2px] rounded-full bg-gradient-to-r from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50"
+    matTooltip="Info about the action"
   >
     <span
       class="block text-slate-100 text-sm px-4 py-2 rounded-full bg-black font-[Lato]"
@@ -13,7 +14,7 @@
   <div
     class="flex flex-col w-full md:w-1/2 items-center py-3 md:py-0 space-y-12 md:space-y-10 md:mx-32"
   >
-    <p class="font-[Lato]">Simulation speed control</p>
+    <p class="font-[Lato]">Simulation speed control (days per second)</p>
     <ngx-slider
       [(value)]="value"
       [options]="options"
@@ -44,16 +45,17 @@
   </button>
 </div>
 <app-planet-tile
-  *ngIf="examplePlanetName"
-  englishName="{{ examplePlanetName.englishName }}"
-  massValue="{{ examplePlanetName.massValue }}"
-  massExponent="{{ examplePlanetName.massExponent }}"
-  meanRadius="{{ examplePlanetName.meanRadius }}"
-  averageTemperature="{{ examplePlanetName.avgTemp }}"
-  moons="{{ examplePlanetName.moons }}"
-  sideralRotation="{{ examplePlanetName.sideralRotation }}"
-  perihelion="{{ examplePlanetName.perihelion }}"
-  aphelion="{{ examplePlanetName.aphelion }}"
-  semimajorAxis="{{ examplePlanetName.semimajorAxis }}"
+  *ngIf="planetName"
+  englishName="{{ planetName.englishName }}"
+  massValue="{{ planetName.massValue }}"
+  massExponent="{{ planetName.massExponent }}"
+  meanRadius="{{ planetName.meanRadius }}"
+  averageTemperature="{{ planetName.avgTemp }}"
+  moons="{{ planetName.moons }}"
+  sideralRotation="{{ planetName.sideralRotation }}"
+  perihelion="{{ planetName.perihelion }}"
+  aphelion="{{ planetName.aphelion }}"
+  semimajorAxis="{{ planetName.semimajorAxis }}"
+  sideralOrbit="{{ planetName.sideralOrbit }}"
 >
 </app-planet-tile>

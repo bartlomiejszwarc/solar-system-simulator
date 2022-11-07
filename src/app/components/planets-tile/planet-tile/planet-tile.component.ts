@@ -1,16 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
-import * as AE from 'astronomy-engine';
-import * as Date from 'src/app/helpers/Date';
-import { Observable } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
 import { Planet } from 'src/app/helpers/Planet';
 import { ModelComponent } from '../../model/model.component';
 
@@ -33,9 +21,10 @@ export class PlanetTileComponent implements OnInit {
   @Input() perihelion!: string;
   @Input() aphelion!: string;
   @Input() semimajorAxis!: string;
+  @Input() sideralOrbit!: string;
 
   planetData!: Planet;
-  planetName = this.modelComponent.examplePlanetName;
+  planetName = this.modelComponent.planetName;
 
   ngOnInit(): void {}
 

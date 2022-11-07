@@ -1,4 +1,6 @@
 //Planets orbital speed (in days)
+import * as PivotPoint from 'src/app/helpers/PivotPoint';
+
 export const mercuryOrbitalSpeed: number = 1 / 88;
 export const venusOrbitalSpeed: number = 1 / 225;
 export const earthOrbitalSpeed: number = 1 / 365;
@@ -80,3 +82,36 @@ export const neptuneOrbitalInclination: number = 1.8;
 
 //Moon distance from The Earth
 export const moonDistanceFromEarth: number = earthRadius + 3.84;
+
+export let distancesArray = [
+  mercuryDistance,
+  venusDistance,
+  earthDistance,
+  marsDistance,
+  jupiterDistance,
+  saturnDistance,
+  uranusDistance,
+  neptuneDistance,
+];
+
+export let rotationSpeedArray = [
+  mercuryRotationSpeed,
+  venusRotationSpeed,
+  earthRotationSpeed,
+  marsRotationSpeed,
+  jupiterRotationSpeed,
+  saturnRotationSpeed,
+  uranusRotationSpeed,
+  neptuneRotationSpeed,
+];
+
+export let orbitalSpeedArray = [
+  mercuryOrbitalSpeed,
+  venusOrbitalSpeed,
+  earthOrbitalSpeed,
+  marsOrbitalSpeed,
+  jupiterOrbitalSpeed,
+  saturnOrbitalSpeed,
+  uranusOrbitalSpeed,
+  neptuneOrbitalSpeed,
+];
