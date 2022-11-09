@@ -1,6 +1,4 @@
-//Planets orbital speed (in days)
-import * as PivotPoint from 'src/app/helpers/PivotPoint';
-
+// //Planets orbital speed (in days)
 export const mercuryOrbitalSpeed: number = 1 / 88;
 export const venusOrbitalSpeed: number = 1 / 225;
 export const earthOrbitalSpeed: number = 1 / 365;
@@ -22,21 +20,25 @@ export const uranusSpinInMinutes: number = -1034;
 export const neptuneSpinInMinutes: number = 960;
 export const moonSpinInMinutes: number = 39312;
 
-//Planets orbital speeds
-export const earthRotationSpeed: number = 1;
+//Planets orbital speeds per day
+const earthDegreesPerDay = 360;
+export const earthRotationSpeed: number =
+  earthDegreesPerDay * (earthSpinInMinutes / earthSpinInMinutes);
 export const mercuryRotationSpeed: number =
-  earthSpinInMinutes / mercurySpinInMinutes;
+  earthDegreesPerDay * (earthSpinInMinutes / mercurySpinInMinutes);
 export const venusRotationSpeed: number =
-  earthSpinInMinutes / venusSpinInMinutes;
-export const marsRotationSpeed: number = earthSpinInMinutes / marsSpinInMinutes;
+  earthDegreesPerDay * (earthSpinInMinutes / venusSpinInMinutes);
+export const marsRotationSpeed: number =
+  earthDegreesPerDay * (earthSpinInMinutes / marsSpinInMinutes);
 export const jupiterRotationSpeed: number =
-  earthSpinInMinutes / jupiterSpinInMinutes;
+  earthDegreesPerDay * (earthSpinInMinutes / jupiterSpinInMinutes);
 export const saturnRotationSpeed: number =
-  earthSpinInMinutes / saturnSpinInMinutes;
+  earthDegreesPerDay * (earthSpinInMinutes / saturnSpinInMinutes);
 export const uranusRotationSpeed: number =
-  earthSpinInMinutes / uranusSpinInMinutes;
+  earthDegreesPerDay * (earthSpinInMinutes / uranusSpinInMinutes);
 export const neptuneRotationSpeed: number =
-  earthSpinInMinutes / neptuneSpinInMinutes;
+  earthDegreesPerDay * (earthSpinInMinutes / neptuneSpinInMinutes);
+
 export const moonRotationSpeed: number = earthRotationSpeed / moonSpinInMinutes;
 
 //Planet sizes

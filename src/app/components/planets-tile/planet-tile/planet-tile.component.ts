@@ -28,5 +28,7 @@ export class PlanetTileComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  closeTile() {}
+  closeTile() {
+    this.modelComponent.planetName = undefined!;
+  }
 }

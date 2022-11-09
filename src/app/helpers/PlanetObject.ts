@@ -59,6 +59,7 @@ export const saturnRings = new THREE.Mesh(
   PlanetGeometry.saturnRingsGeometry,
   PlanetMaterial.saturnRingsMaterial
 );
+
 saturnRings.rotateZ(degToRad(PlanetData.saturnTilt));
 
 export const uranus = new THREE.Mesh(

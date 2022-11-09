@@ -10,6 +10,8 @@ import * as PivotPoint from 'src/app/helpers/PivotPoint';
 import * as PlanetOrbit from 'src/app/helpers/PlanetOrbit';
 import { InteractionManager } from 'three.interactive';
 import { Planet } from 'src/app/helpers/Planet';
+import { Clock } from 'three';
+import { degToRad } from 'three/src/math/MathUtils';
 
 @Component({
   selector: 'app-model',
@@ -21,18 +23,20 @@ export class ModelComponent implements OnInit {
   options: Options = {
     showTicksValues: true,
     stepsArray: [
-      { value: 1 },
-      { value: 10 },
-      { value: 100 }, //1 orbit = 3.65 sec
-      { value: 200 },
-      { value: 500 },
-      { value: 1000 },
+      { value: 0.25 },
+      { value: 0.5 },
+      { value: 1 }, //1 orbit = 3.65 sec
+      { value: 7 },
+      { value: 30 },
+      { value: 100 },
+      { value: 365 },
     ],
   };
   speedSliderValue = 0;
 
   //Global speed multiplier
-  globalRotationSpeed = 0.044;
+  globalRotationSpeed = 0.1;
+  globalSpinSpeed = 1;
 
   //Orbit trace flag
   orbitTraceFlag = false;
@@ -62,12 +66,12 @@ export class ModelComponent implements OnInit {
     );
     const scene = new THREE.Scene();
 
-    //Creating a renderer
+    //Creating renderer
     this.renderer.setPixelRatio(2);
-    this.renderer.setSize(window.innerWidth, window.innerHeight); // setting its size to match window inner width and height
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(this.renderer.domElement);
 
-    //Creating a camera to look around the scene and set inital view
+    //Creating camera
     this.camera.position.set(250, 250, 250);
     const orbit = new OrbitControls(this.camera, this.renderer.domElement);
 
@@ -83,10 +87,12 @@ export class ModelComponent implements OnInit {
 
     //Adding light from The Sun
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.015);
+    //
     const pointLight = new THREE.PointLight(0xffffff, 1.2137, 3500000);
     PlanetObject.sun.add(ambientLight);
     PlanetObject.sun.add(pointLight);
 
+    //Adding click events to objects and fetching data
     PlanetObject.planets.forEach((planet) => {
       interactionManager.add(planet);
       planet.addEventListener('click', () => {
@@ -117,42 +123,60 @@ export class ModelComponent implements OnInit {
       });
     });
 
+    const clock = new Clock();
+    let delta = 0;
+    // 60 fps
+    const fps = 60;
+    let interval = 1 / fps;
+
+    //Animation loop
     this.renderer.setAnimationLoop(() => {
-      for (var i = 0; i < PlanetObject.planets.length; i++) {
-        PlanetObject.planets[i].position.set(
-          PlanetData.distancesArray[i],
-          0,
-          0
-        );
-        PlanetObject.planets[i].rotateY(
-          PlanetData.rotationSpeedArray[i] * this.globalRotationSpeed
-        );
-        PivotPoint.pivotPointArray[i].rotateY(
-          PlanetData.orbitalSpeedArray[i] * this.globalRotationSpeed
-        );
-      }
-      PlanetObject.saturnRings.position.set(PlanetData.saturnDistance, 0, 0);
+      delta += clock.getDelta();
+      if (delta > interval) {
+        for (var i = 0; i < PlanetObject.planets.length; i++) {
+          PlanetObject.planets[i].position.set(
+            PlanetData.distancesArray[i],
+            0,
+            0
+          );
+          PlanetObject.planets[i].rotateY(
+            degToRad(
+              (PlanetData.rotationSpeedArray[i] / fps) * this.globalSpinSpeed
+            )
+          );
+          PivotPoint.pivotPointArray[i].rotateY(
+            degToRad(
+              fps * PlanetData.orbitalSpeedArray[i] * this.globalRotationSpeed
+            )
+          );
+        }
 
-      if (this.orbitTraceFlag) {
-        PlanetOrbit.orbits.forEach((orbit) => {
-          PlanetObject.sun.add(orbit);
-        });
-      } else {
-        PlanetOrbit.orbits.forEach((orbit) => {
-          PlanetObject.sun.remove(orbit);
-        });
-      }
+        PlanetObject.saturnRings.position.set(PlanetData.saturnDistance, 0, 0);
 
-      interactionManager.update();
-      this.renderer.render(scene, this.camera);
+        if (this.orbitTraceFlag) {
+          PlanetOrbit.orbits.forEach((orbit) => {
+            PlanetObject.sun.add(orbit);
+          });
+        } else {
+          PlanetOrbit.orbits.forEach((orbit) => {
+            PlanetObject.sun.remove(orbit);
+          });
+        }
+
+        interactionManager.update();
+        this.renderer.render(scene, this.camera);
+        delta = delta % interval;
+      }
     });
   }
 
   ngOnInit(): void {}
 
   changeSpeed(value: number) {
-    this.globalRotationSpeed = 0.044;
+    this.globalRotationSpeed = 0.1;
+    this.globalSpinSpeed = 1;
     this.globalRotationSpeed *= value;
+    this.globalSpinSpeed *= value;
   }
   orbits() {
     this.orbitTraceFlag = !this.orbitTraceFlag;

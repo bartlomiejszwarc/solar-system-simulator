@@ -1,10 +1,6 @@
 import * as THREE from 'three';
 import * as PlanetGeometry from 'src/app/helpers/PlanetGeometry';
 import * as PlanetMaterial from 'src/app/helpers/PlanetMaterial';
-import * as PlanetData from 'src/app/helpers/PlanetData';
-import { degToRad } from 'three/src/math/MathUtils';
-import * as AE from 'astronomy-engine';
-import * as Date from 'src/app/helpers/Date';
 
 export const mercuryOrbit = new THREE.Mesh(
   PlanetGeometry.mercuryOrbitGeometry,
