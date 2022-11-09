@@ -12,6 +12,7 @@ import { InteractionManager } from 'three.interactive';
 import { Planet } from 'src/app/helpers/Planet';
 import { Clock } from 'three';
 import { degToRad } from 'three/src/math/MathUtils';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-model',
@@ -27,8 +28,8 @@ export class ModelComponent implements OnInit {
       { value: 0.5 },
       { value: 1 }, //1 orbit = 3.65 sec
       { value: 7 },
-      { value: 30 },
-      { value: 100 },
+      { value: 14 },
+      { value: 28 },
       { value: 365 },
     ],
   };
@@ -39,7 +40,7 @@ export class ModelComponent implements OnInit {
   globalSpinSpeed = 1;
 
   //Orbit trace flag
-  orbitTraceFlag = false;
+  showOrbit = false;
 
   //Calculating today's date for planets eclipse longitude
   planetName!: Planet;
@@ -57,7 +58,12 @@ export class ModelComponent implements OnInit {
     30000
   );
 
-  constructor(private dataService: DataService) {
+  constructor(
+    private dataService: DataService,
+    public translate: TranslateService
+  ) {
+    translate.addLangs(['en', 'pl']);
+    translate.setDefaultLang('pl');
     const interactionManager = new InteractionManager(
       this.renderer,
       this.camera,
@@ -139,21 +145,25 @@ export class ModelComponent implements OnInit {
             0,
             0
           );
+          //own
           PlanetObject.planets[i].rotateY(
             degToRad(
               (PlanetData.rotationSpeedArray[i] / fps) * this.globalSpinSpeed
             )
           );
+
+          //orbital
           PivotPoint.pivotPointArray[i].rotateY(
             degToRad(
-              fps * PlanetData.orbitalSpeedArray[i] * this.globalRotationSpeed
+              (PlanetData.orbitalSpeedArray[i] / interval) *
+                this.globalRotationSpeed
             )
           );
         }
 
         PlanetObject.saturnRings.position.set(PlanetData.saturnDistance, 0, 0);
 
-        if (this.orbitTraceFlag) {
+        if (this.showOrbit) {
           PlanetOrbit.orbits.forEach((orbit) => {
             PlanetObject.sun.add(orbit);
           });
@@ -179,7 +189,7 @@ export class ModelComponent implements OnInit {
     this.globalSpinSpeed *= value;
   }
   orbits() {
-    this.orbitTraceFlag = !this.orbitTraceFlag;
-    console.log(this.orbitTraceFlag);
+    this.showOrbit = !this.showOrbit;
+    console.log(this.showOrbit);
   }
 }

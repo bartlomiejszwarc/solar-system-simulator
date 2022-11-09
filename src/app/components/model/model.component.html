@@ -8,14 +8,14 @@
   >
     <span
       class="block text-slate-100 text-sm px-4 py-2 rounded-full bg-black font-[Lato]"
-      >Date mode</span
+      >{{ "modeButton" | translate }}</span
     >
   </button>
 
   <div
     class="flex flex-col w-full md:w-1/2 items-center py-3 md:py-0 space-y-12 md:space-y-10 md:mx-32"
   >
-    <p class="font-[Lato]">Simulation speed control (days per second)</p>
+    <p class="font-[Lato]">{{ "overSliderText" | translate }}</p>
     <ngx-slider
       [(value)]="value"
       [options]="options"
@@ -27,21 +27,21 @@
   <button
     class="w-40 m-4 p-[2px] rounded-full bg-gradient-to-l from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50"
     (click)="orbits()"
-    *ngIf="!orbitTraceFlag"
+    *ngIf="!showOrbit"
   >
     <span
       class="block text-slate-100 text-sm px-4 py-2 rounded-full bg-black font-[Lato]"
-      >Show orbits</span
+      >{{ "orbitsShowButton" | translate }}</span
     >
   </button>
   <button
     class="w-40 m-4 p-[2px] rounded-full bg-gradient-to-l from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50"
     (click)="orbits()"
-    *ngIf="orbitTraceFlag"
+    *ngIf="showOrbit"
   >
     <span
       class="block text-slate-100 text-sm px-4 py-2 rounded-full bg-black font-[Lato]"
-      >Hide orbits</span
+      >{{ "orbitsHideButton" | translate }}</span
     >
   </button>
 </div>

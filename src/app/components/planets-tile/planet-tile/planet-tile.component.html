@@ -7,7 +7,7 @@
     <div class="px-4 py-4 flex flex-col items-evenly">
       <div class="flex flex-row justify-between items-center">
         <p class="text-gray-200 text-xl pl-3 pb-2 font-thin">
-          {{ englishName }}
+          {{ englishName | translate }}
         </p>
         <mat-icon
           class="text-neutral-400 ml-4 mb-3 cursor-pointer"
@@ -24,7 +24,7 @@
       dynamicHeight
       animationDuration="400ms"
     >
-      <mat-tab label="Orbital characteristics">
+      <mat-tab label="{{ 'orbitalCharacteristics' | translate }}">
         <div class="pl-6 py-3">
           <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
             <p class="text-sky-200 font-normal text-md" matTooltip="xd">
@@ -33,7 +33,7 @@
           </div>
           <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
             <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
-              Length of year
+              {{ "lengthOfYear" | translate }}
             </p>
             <p class="text-sky-200 font-normal text-md">
               {{ semimajorAxis }} km
@@ -41,24 +41,24 @@
           </div>
           <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
             <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
-              Semi-major axis
+              {{ "semiMajorAxis" | translate }}
             </p>
             <p class="text-sky-200 font-normal text-md">{{ perihelion }} km</p>
           </div>
           <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
             <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
-              Perihelion
+              {{ "perihelion" | translate }}
             </p>
             <p class="text-sky-200 font-normal text-md">{{ aphelion }} km</p>
           </div>
           <p
             class="text-gray-400 font-extralight text-[0.7rem] uppercase cursor-default"
           >
-            Aphelion
+            {{ "aphelion" | translate }}
           </p>
         </div>
       </mat-tab>
-      <mat-tab label="Physical characteristics">
+      <mat-tab label="{{ 'physicalCharacteristics' | translate }}">
         <div class="pl-6 py-3">
           <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
             <p class="text-sky-200 font-normal text-md" matTooltip="xd">
@@ -67,7 +67,7 @@
           </div>
           <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
             <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
-              Length of day
+              {{ "lengthOfDay" | translate }}
             </p>
             <p class="text-sky-200 font-normal text-md">
               {{ massValue }} &times; 10<sup>{{ massExponent }}</sup> kg
@@ -75,7 +75,7 @@
           </div>
           <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
             <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
-              Mass
+              {{ "mass" | translate }}
             </p>
             <p class="text-sky-200 font-normal text-md">
               {{ averageTemperature }} &deg;C
@@ -83,14 +83,14 @@
           </div>
           <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
             <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
-              Average temperature
+              {{ "averageTemperature" | translate }}
             </p>
             <p class="text-sky-200 font-normal text-md">{{ meanRadius }} km</p>
           </div>
 
           <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
             <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
-              Mean radius
+              {{ "meanRadius" | translate }}
             </p>
             <p
               class="text-sky-200 font-normal text-md"
@@ -108,7 +108,7 @@
           <p
             class="text-gray-400 font-extralight text-[0.7rem] uppercase cursor-default"
           >
-            Moons
+            {{ "moons" | translate }}
           </p>
         </div>
       </mat-tab>

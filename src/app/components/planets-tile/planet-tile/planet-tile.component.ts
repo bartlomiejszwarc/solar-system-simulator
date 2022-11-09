@@ -1,5 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { TABLE_HORIZONTAL_SPLIT } from '@syncfusion/ej2/richtexteditor';
 import { Planet } from 'src/app/helpers/Planet';
+import { SharedService } from 'src/app/services/shared.service';
 import { ModelComponent } from '../../model/model.component';
 
 @Component({
@@ -8,9 +11,13 @@ import { ModelComponent } from '../../model/model.component';
   styleUrls: ['./planet-tile.component.css'],
 })
 export class PlanetTileComponent implements OnInit {
-  constructor(private modelComponent: ModelComponent) {}
+  lang!: string;
+  constructor(
+    private modelComponent: ModelComponent,
+    public translate: TranslateService,
+    private shared: SharedService
+  ) {}
 
-  planet = 'Earth';
   @Input() englishName!: string;
   @Input() massValue!: string;
   @Input() massExponent!: string;
@@ -25,10 +32,12 @@ export class PlanetTileComponent implements OnInit {
 
   planetData!: Planet;
   planetName = this.modelComponent.planetName;
+  orbitalCharacteristic!: string;
+  physicalCharacteristic!: string;
 
   ngOnInit(): void {}
 
-  closeTile() {
+  closeTile(): void {
     this.modelComponent.planetName = undefined!;
   }
 }

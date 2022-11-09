@@ -5,6 +5,38 @@
   width: 400px;
 }
 
+@media only screen and (max-width: 400px) {
+  #position-wrapper {
+    top: 40%;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    width: 300px;
+    max-height: 400px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #position-wrapper {
+    top: 40%;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    width: 300px;
+    max-height: 400px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  #position-wrapper {
+    margin: 0 auto;
+    width: 350px;
+    right: 0;
+    max-height: 400px;
+    transform: scale(0.75);
+  }
+}
+
 img {
   transform: scale(70%);
 }
