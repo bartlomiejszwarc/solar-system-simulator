@@ -288,14 +288,10 @@ export class TestComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
-  }
+  ngOnChanges(changes: SimpleChanges) {}
 
   changeSpeed() {
-    console.log(this.globalRotationSpeed); // result: 3
     this.globalRotationSpeed = 1; //not working
-    console.log(this.globalRotationSpeed); // result: 10
   }
 
   daysSinceMilleniumFromToday(today: Date): number {

@@ -1,7 +1,11 @@
 {
-  "modeButton": "Date mode",
+  "datemodeButton": "Date mode",
+  "simulationmodeButton": "Simulation mode",
   "orbitsShowButton": "Show orbits",
   "orbitsHideButton": "Hide orbits",
+  "chooseDateText": "Choose a date",
+  "accept": "Accept",
+  "cancel": "Cancel",
   "overSliderText": "Simulation speed control (days per second)",
   "orbitalCharacteristics": "Orbital characteristics",
   "physicalCharacteristics": "Physical characteristics",

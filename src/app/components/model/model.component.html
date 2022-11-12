@@ -1,17 +1,6 @@
 <div
-  class="flex md:flex-row flex-col bg-black text-white py-4 items-center justify-center"
+  class="flex md:flex-row flex-col-reverse bg-black text-white py-4 items-center justify-between"
 >
-  <button
-    class="w-40 m-4 p-[2px] rounded-full bg-gradient-to-r from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50"
-    matTooltip="Info about the action"
-    disabled
-  >
-    <span
-      class="block text-slate-100 text-sm px-4 py-2 rounded-full bg-black font-[Lato]"
-      >{{ "modeButton" | translate }}</span
-    >
-  </button>
-
   <div
     class="flex flex-col w-full md:w-1/2 items-center py-3 md:py-0 space-y-12 md:space-y-10 md:mx-32"
   >
@@ -23,27 +12,38 @@
     >
     </ngx-slider>
   </div>
+  <div class="flex flex-col md:flex-row justify-center items-center">
+    <button
+      class="w-40 m-4 p-[2px] rounded-full bg-gradient-to-r from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50"
+      (click)="dateMode()"
+    >
+      <span
+        class="block text-slate-100 text-sm px-4 py-2 rounded-full bg-black font-[Lato]"
+        >{{ "datemodeButton" | translate }}</span
+      >
+    </button>
 
-  <button
-    class="w-40 m-4 p-[2px] rounded-full bg-gradient-to-l from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50"
-    (click)="orbits()"
-    *ngIf="!showOrbit"
-  >
-    <span
-      class="block text-slate-100 text-sm px-4 py-2 rounded-full bg-black font-[Lato]"
-      >{{ "orbitsShowButton" | translate }}</span
+    <button
+      class="w-40 m-4 p-[2px] rounded-full bg-gradient-to-l from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50"
+      *ngIf="!showOrbit"
+      (click)="orbits()"
     >
-  </button>
-  <button
-    class="w-40 m-4 p-[2px] rounded-full bg-gradient-to-l from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50"
-    (click)="orbits()"
-    *ngIf="showOrbit"
-  >
-    <span
-      class="block text-slate-100 text-sm px-4 py-2 rounded-full bg-black font-[Lato]"
-      >{{ "orbitsHideButton" | translate }}</span
+      <span
+        class="block text-slate-100 text-sm px-4 py-2 rounded-full bg-black font-[Lato]"
+        >{{ "orbitsShowButton" | translate }}</span
+      >
+    </button>
+    <button
+      class="w-40 m-4 p-[2px] rounded-full bg-gradient-to-l from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50"
+      *ngIf="showOrbit"
+      (click)="orbits()"
     >
-  </button>
+      <span
+        class="block text-slate-100 text-sm px-4 py-2 rounded-full bg-black font-[Lato]"
+        >{{ "orbitsHideButton" | translate }}</span
+      >
+    </button>
+  </div>
 </div>
 <app-planet-tile
   *ngIf="planetName"

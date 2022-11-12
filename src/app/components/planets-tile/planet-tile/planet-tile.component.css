@@ -3,6 +3,7 @@
   top: 20%;
   right: 5%;
   width: 400px;
+  z-index: 1;
 }
 
 @media only screen and (max-width: 400px) {

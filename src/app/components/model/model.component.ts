@@ -13,6 +13,7 @@ import { Planet } from 'src/app/helpers/Planet';
 import { Clock } from 'three';
 import { degToRad } from 'three/src/math/MathUtils';
 import { TranslateService } from '@ngx-translate/core';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-model',
@@ -41,7 +42,7 @@ export class ModelComponent implements OnInit {
 
   //Orbit trace flag
   showOrbit = false;
-
+  dateModeFlag: boolean = false;
   //Calculating today's date for planets eclipse longitude
   planetName!: Planet;
   renderer = new THREE.WebGLRenderer({
@@ -57,10 +58,11 @@ export class ModelComponent implements OnInit {
     10,
     30000
   );
-
+  scene = new THREE.Scene();
   constructor(
     private dataService: DataService,
-    public translate: TranslateService
+    public translate: TranslateService,
+    public app: AppComponent
   ) {
     translate.addLangs(['en', 'pl']);
     translate.setDefaultLang('pl');
@@ -70,7 +72,6 @@ export class ModelComponent implements OnInit {
       this.renderer.domElement,
       false
     );
-    const scene = new THREE.Scene();
 
     //Creating renderer
     this.renderer.setPixelRatio(2);
@@ -81,22 +82,22 @@ export class ModelComponent implements OnInit {
     this.camera.position.set(250, 250, 250);
     const orbit = new OrbitControls(this.camera, this.renderer.domElement);
 
-    scene.background = PlanetTexture.backgroundTextureMap;
+    this.scene.background = PlanetTexture.backgroundTextureMap;
 
     //Adding sun to scene
-    scene.add(PlanetObject.sun);
+    this.scene.add(PlanetObject.sun);
 
     //Adding pivot points to scene
     PivotPoint.pivotPointArray.forEach((pivotPoint) => {
-      scene.add(pivotPoint);
+      this.scene.add(pivotPoint);
     });
 
     //Adding light from The Sun
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.015);
     //
     const pointLight = new THREE.PointLight(0xffffff, 1.2137, 3500000);
-    PlanetObject.sun.add(ambientLight);
-    PlanetObject.sun.add(pointLight);
+    this.scene.add(ambientLight);
+    this.scene.add(pointLight);
 
     //Adding click events to objects and fetching data
     PlanetObject.planets.forEach((planet) => {
@@ -174,7 +175,7 @@ export class ModelComponent implements OnInit {
         }
 
         interactionManager.update();
-        this.renderer.render(scene, this.camera);
+        this.renderer.render(this.scene, this.camera);
         delta = delta % interval;
       }
     });
@@ -190,6 +191,12 @@ export class ModelComponent implements OnInit {
   }
   orbits() {
     this.showOrbit = !this.showOrbit;
-    console.log(this.showOrbit);
+  }
+
+  dateMode() {
+    this.app.setMode();
+    this.dateModeFlag = true;
+    document.body.removeChild(this.renderer.domElement);
+    this.renderer.setAnimationLoop(null);
   }
 }

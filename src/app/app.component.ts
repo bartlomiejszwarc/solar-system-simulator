@@ -1,6 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { PlanetTileComponent } from './components/planets-tile/planet-tile/planet-tile.component';
-import { DataService } from './services/data.service';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +9,10 @@ import { DataService } from './services/data.service';
 export class AppComponent {
   title = 'solar-system-simulator';
   planet = 'earth';
-  constructor() {}
+  dateMode: boolean = false;
+  constructor(public router: Router) {}
+
+  setMode() {
+    this.dateMode = !this.dateMode;
+  }
 }

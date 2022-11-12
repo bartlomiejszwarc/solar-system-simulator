@@ -11,7 +11,6 @@ export class DataService {
   apiUrl = 'https://api.le-systeme-solaire.net/rest/bodies/';
 
   getPlanetData(id: string): Observable<any> {
-    console.log(id);
     return this.http.get(this.apiUrl + `/${id}`);
   }
 }

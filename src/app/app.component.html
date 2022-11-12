@@ -1,2 +1,3 @@
 <app-header></app-header>
-<app-model></app-model>
+<app-model *ngIf="dateMode"></app-model>
+<app-model-datemode *ngIf="!dateMode"></app-model-datemode>
