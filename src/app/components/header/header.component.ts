@@ -16,9 +16,12 @@ export class HeaderComponent implements OnInit {
     translate.setDefaultLang('pl');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.translate.setDefaultLang(localStorage.getItem('lang')!);
+  }
   switchLanguage(language: string) {
     this.shared.setLanguage(language);
     this.translate.setDefaultLang(this.shared.getLanguage());
+    localStorage.setItem('lang', this.shared.getLanguage());
   }
 }
