@@ -65,7 +65,6 @@ export class ModelComponent implements OnInit {
     public app: AppComponent
   ) {
     translate.addLangs(['en', 'pl']);
-    translate.setDefaultLang('pl');
     const interactionManager = new InteractionManager(
       this.renderer,
       this.camera,
@@ -112,19 +111,16 @@ export class ModelComponent implements OnInit {
           this.planetName.massValue = res.mass.massValue;
           this.planetName.massExponent = res.mass.massExponent;
           this.planetName.avgTemp = (res.avgTemp - 272.15).toFixed(1);
-          if (res.sideralOrbit > 364) {
-            this.planetName.sideralOrbit =
-              (res.sideralOrbit / 356).toFixed(1) + ' Earth years ';
-          } else {
-            this.planetName.sideralOrbit =
-              res.sideralOrbit.toFixed(1) + ' Earth days';
-          }
+
+          this.planetName.sideralOrbit = res.sideralOrbit.toFixed(1) + ' d';
+
+          //TODO: days/years
           if (Math.abs(res.sideralRotation) > 24) {
             this.planetName.sideralRotation =
-              (Math.abs(res.sideralRotation) / 24).toFixed(1) + ' Earth days ';
+              (Math.abs(res.sideralRotation) / 24).toFixed(2) + ' d';
           } else {
             this.planetName.sideralRotation =
-              Math.abs(res.sideralRotation).toFixed(1) + ' hours';
+              Math.abs(res.sideralRotation).toFixed(2) + ' h';
           }
         });
       });

@@ -26,6 +26,7 @@
   "Saturn": "Saturn",
   "Uranus": "Uran",
   "Neptune": "Neptun",
-  "earthDays": "Dni ziemskich",
-  "earthYears": "Lat ziemskich"
+  "earthDays": "dni ziemskich",
+  "earthYears": "lat ziemskich",
+  "hours": "godzin"
 }

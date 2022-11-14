@@ -17,7 +17,6 @@ import { AppComponent } from 'src/app/app.component';
 import { DatePipe } from '@angular/common';
 import * as AE from 'astronomy-engine';
 import * as DateHelper from 'src/app/helpers/Date';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-model-datemode',
@@ -64,7 +63,6 @@ export class ModelDatemodeComponent implements OnInit {
     public app: AppComponent
   ) {
     translate.addLangs(['en', 'pl']);
-    translate.setDefaultLang('pl');
     const interactionManager = new InteractionManager(
       this.rendererDate,
       this.camera,

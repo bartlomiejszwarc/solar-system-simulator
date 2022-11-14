@@ -61,16 +61,8 @@
       <mat-tab label="{{ 'physicalCharacteristics' | translate }}">
         <div class="pl-6 py-3">
           <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
-            <p class="text-sky-200 font-normal text-md" matTooltip="xd">
-              {{ sideralRotation }}
-            </p>
-          </div>
-          <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
-            <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
-              {{ "mass" | translate }}
-            </p>
             <p class="text-sky-200 font-normal text-md">
-              {{ averageTemperature }} &deg;C
+              {{ sideralRotation }}
             </p>
           </div>
           <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
@@ -78,12 +70,20 @@
               {{ "lengthOfDay" | translate }}
             </p>
             <p class="text-sky-200 font-normal text-md">
-              {{ massValue }} &times; 10<sup>{{ massExponent }}</sup> kg
+              {{ averageTemperature }} &deg;C
             </p>
           </div>
           <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
             <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
               {{ "averageTemperature" | translate }}
+            </p>
+            <p class="text-sky-200 font-normal text-md">
+              {{ massValue }} &times; 10<sup>{{ massExponent }}</sup> kg
+            </p>
+          </div>
+          <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
+            <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
+              {{ "mass" | translate }}
             </p>
             <p class="text-sky-200 font-normal text-md">{{ meanRadius }} km</p>
           </div>

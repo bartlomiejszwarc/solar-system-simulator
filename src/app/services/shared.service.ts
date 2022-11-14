@@ -9,7 +9,16 @@ export class SharedService {
 
   constructor() {}
 
+  currentLang!: string;
   changeLanguage(language: string) {
     this.languageBefore.next(language);
+  }
+
+  getLanguage() {
+    return this.currentLang;
+  }
+
+  setLanguage(language: string) {
+    this.currentLang = language;
   }
 }

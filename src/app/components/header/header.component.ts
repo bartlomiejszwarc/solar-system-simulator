@@ -12,10 +12,13 @@ export class HeaderComponent implements OnInit {
   constructor(
     private shared: SharedService,
     public translate: TranslateService
-  ) {}
+  ) {
+    translate.setDefaultLang('pl');
+  }
 
   ngOnInit(): void {}
   switchLanguage(language: string) {
-    this.translate.setDefaultLang(language);
+    this.shared.setLanguage(language);
+    this.translate.setDefaultLang(this.shared.getLanguage());
   }
 }
