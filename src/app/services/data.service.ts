@@ -1,16 +1,16 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
+import { Observable } from 'rxjs'
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root'
 })
 export class DataService {
-  constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {}
 
-  apiUrl = 'https://api.le-systeme-solaire.net/rest/bodies/';
+    apiUrl = 'https://api.le-systeme-solaire.net/rest/bodies/'
 
-  getPlanetData(id: string): Observable<any> {
-    return this.http.get(this.apiUrl + `/${id}`);
-  }
+    getPlanetData(id: string): Observable<any> {
+        return this.http.get(this.apiUrl + `/${id}`)
+    }
 }

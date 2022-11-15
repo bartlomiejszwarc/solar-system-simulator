@@ -1,112 +1,96 @@
 <div
-  class="flex md:flex-row flex-col-reverse bg-black text-white py-4 items-center justify-between"
->
-  <div
-    class="flex flex-col items-center py-3 md:py-0 space-y-12 md:space-y-10 md:ml-2"
-  >
-    <mat-form-field appearance="fill" class="w-full flex flex-col">
-      <div
-        class="flex flex-row justify-around items-center pl-4 p-[2px] rounded-full bg-gradient-to-r from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50"
-      >
-        <mat-label *ngIf="datepicker !== undefined">{{
-          "chooseDateText" | translate
-        }}</mat-label>
-        <div class="w-0">
-          <input
-            matInput
-            [min]="millenium"
-            [matDatepicker]="datepicker"
-            name="singleDate"
-            [(ngModel)]="form.singleDate"
-            #singleDate="ngModel"
-          />
-        </div>
-        <mat-datepicker-toggle
-          matSuffix
-          [for]="datepicker"
-          class="datepicker-toggle-button"
-        ></mat-datepicker-toggle>
-      </div>
-      <p
-        *ngIf="singleDateFormatted === '' || singleDateFormatted === null"
-        class="pl-10 pt-2"
-      >
-        {{ today }}
-      </p>
-      <p *ngIf="singleDateFormatted !== ''" class="pl-10 pt-2">
-        {{ singleDateFormatted }}
-      </p>
+    class="flex md:flex-row flex-col-reverse bg-black text-white py-4 items-center justify-between">
+    <div class="flex flex-col items-center py-3 md:py-0 space-y-12 md:space-y-10 md:ml-2">
+        <mat-form-field appearance="fill" class="w-full flex flex-col">
+            <div
+                class="flex flex-row justify-around items-center pl-4 p-[2px] rounded-full bg-gradient-to-r from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50">
+                <mat-label *ngIf="datepicker !== undefined">{{
+                    'chooseDateText' | translate
+                }}</mat-label>
+                <div class="w-0">
+                    <input
+                        matInput
+                        [min]="millenium"
+                        [matDatepicker]="datepicker"
+                        name="singleDate"
+                        [(ngModel)]="form.singleDate"
+                        #singleDate="ngModel" />
+                </div>
+                <mat-datepicker-toggle
+                    matSuffix
+                    [for]="datepicker"
+                    class="datepicker-toggle-button"></mat-datepicker-toggle>
+            </div>
+            <p
+                *ngIf="singleDateFormatted === '' || singleDateFormatted === null"
+                class="pl-10 pt-2">
+                {{ today }}
+            </p>
+            <p *ngIf="singleDateFormatted !== ''" class="pl-10 pt-2">
+                {{ singleDateFormatted }}
+            </p>
 
-      <mat-datepicker #datepicker>
-        <mat-datepicker-actions>
-          <div class="w-72 mt-4 flex flex-row justify-end space-x-2">
-            <button
-              class="px-3 text-slate-400 font-thin rounded-xl"
-              mat-button
-              matDatepickerCancel
-            >
-              {{ "cancel" | translate }}
-            </button>
-            <button
-              class="px-4 py-1 bg-sky-800 text-slate-100 font-thin rounded-2xl"
-              mat-raised-button
-              color="primary"
-              matDatepickerApply
-              (click)="catchDate()"
-            >
-              {{ "accept" | translate }}
-            </button>
-          </div>
-        </mat-datepicker-actions>
-      </mat-datepicker>
-    </mat-form-field>
-  </div>
+            <mat-datepicker #datepicker>
+                <mat-datepicker-actions>
+                    <div class="w-72 mt-4 flex flex-row justify-end space-x-2">
+                        <button
+                            class="px-3 text-slate-400 font-thin rounded-xl"
+                            mat-button
+                            matDatepickerCancel>
+                            {{ 'cancel' | translate }}
+                        </button>
+                        <button
+                            class="px-4 py-1 bg-sky-800 text-slate-100 font-thin rounded-2xl"
+                            mat-raised-button
+                            color="primary"
+                            matDatepickerApply
+                            (click)="catchDate()">
+                            {{ 'accept' | translate }}
+                        </button>
+                    </div>
+                </mat-datepicker-actions>
+            </mat-datepicker>
+        </mat-form-field>
+    </div>
 
-  <div class="flex flex-col md:flex-row justify-center items-center">
-    <button
-      class="w-40 m-4 p-[2px] rounded-full bg-gradient-to-r from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50"
-      (click)="dateMode()"
-    >
-      <span
-        class="block text-slate-100 text-sm px-4 py-2 rounded-full bg-black font-[Lato]"
-        >{{ "simulationmodeButton" | translate }}</span
-      >
-    </button>
+    <div class="flex flex-col md:flex-row justify-center items-center">
+        <button
+            class="w-40 m-4 p-[2px] rounded-full bg-gradient-to-r from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50"
+            (click)="dateMode()">
+            <span class="block text-slate-100 text-sm px-4 py-2 rounded-full bg-black">{{
+                'simulationmodeButton' | translate
+            }}</span>
+        </button>
 
-    <button
-      class="w-40 m-4 p-[2px] rounded-full bg-gradient-to-l from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50"
-      *ngIf="!showOrbit"
-      (click)="orbits()"
-    >
-      <span
-        class="block text-slate-100 text-sm px-4 py-2 rounded-full bg-black font-[Lato]"
-        >{{ "orbitsShowButton" | translate }}</span
-      >
-    </button>
-    <button
-      class="w-40 m-4 p-[2px] rounded-full bg-gradient-to-l from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50"
-      *ngIf="showOrbit"
-      (click)="orbits()"
-    >
-      <span
-        class="block text-slate-100 text-sm px-4 py-2 rounded-full bg-black font-[Lato]"
-        >{{ "orbitsHideButton" | translate }}</span
-      >
-    </button>
-  </div>
+        <button
+            class="w-40 m-4 p-[2px] rounded-full bg-gradient-to-l from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50"
+            *ngIf="!showOrbit"
+            (click)="orbits()">
+            <span class="block text-slate-100 text-sm px-4 py-2 rounded-full bg-black">{{
+                'orbitsShowButton' | translate
+            }}</span>
+        </button>
+        <button
+            class="w-40 m-4 p-[2px] rounded-full bg-gradient-to-l from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50"
+            *ngIf="showOrbit"
+            (click)="orbits()">
+            <span class="block text-slate-100 text-sm px-4 py-2 rounded-full bg-black">{{
+                'orbitsHideButton' | translate
+            }}</span>
+        </button>
+    </div>
 </div>
 <app-planet-tile
-  *ngIf="planetNameData"
-  englishName="{{ planetNameData.englishName }}"
-  massValue="{{ planetNameData.massValue }}"
-  massExponent="{{ planetNameData.massExponent }}"
-  meanRadius="{{ planetNameData.meanRadius }}"
-  averageTemperature="{{ planetNameData.avgTemp }}"
-  moons="{{ planetNameData.moons }}"
-  sideralRotation="{{ planetNameData.sideralRotation }}"
-  perihelion="{{ planetNameData.perihelion }}"
-  aphelion="{{ planetNameData.aphelion }}"
-  semimajorAxis="{{ planetNameData.semimajorAxis }}"
-  sideralOrbit="{{ planetNameData.sideralOrbit }}"
->
+    *ngIf="planetNameData"
+    englishName="{{ planetNameData.englishName }}"
+    massValue="{{ planetNameData.massValue }}"
+    massExponent="{{ planetNameData.massExponent }}"
+    meanRadius="{{ planetNameData.meanRadius }}"
+    averageTemperature="{{ planetNameData.avgTemp }}"
+    moons="{{ planetNameData.moons }}"
+    sideralRotation="{{ planetNameData.sideralRotation }}"
+    perihelion="{{ planetNameData.perihelion }}"
+    aphelion="{{ planetNameData.aphelion }}"
+    semimajorAxis="{{ planetNameData.semimajorAxis }}"
+    sideralOrbit="{{ planetNameData.sideralOrbit }}">
 </app-planet-tile>

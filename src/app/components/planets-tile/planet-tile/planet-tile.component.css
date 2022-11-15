@@ -1,23 +1,26 @@
 #position-wrapper {
-  position: absolute;
-  top: 20%;
-  right: 5%;
-  width: 400px;
-  z-index: 1;
-  transform: scale(0.95);
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    width: 400px;
+    z-index: 1;
+    transform: scale(0.95);
 }
 
 @media only screen and (max-width: 700px) {
-  #position-wrapper {
-    top: 45%;
-    margin: 0 auto;
-    width: 350px;
-    transform: scale(0.75);
-    left: 0;
-    right: 0;
-  }
+    #position-wrapper {
+        top: 45%;
+        margin: 0 auto;
+        width: 350px;
+        transform: scale(0.75);
+        left: 0;
+        right: 0;
+    }
 }
 
 img {
-  transform: scale(70%);
+    transform: scale(70%);
+}
+* {
+    font-family: 'Chakra Petch';
 }

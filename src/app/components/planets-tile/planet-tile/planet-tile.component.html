@@ -1,117 +1,113 @@
-<link
-  href="https://fonts.googleapis.com/icon?family=Material+Icons"
-  rel="stylesheet"
-/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 <div id="position-wrapper">
-  <div class="bg-black border-2 bg-opacity-70 border-gray-700 rounded-xl">
-    <div class="px-4 py-4 flex flex-col items-evenly">
-      <div class="flex flex-row justify-between items-center">
-        <p class="text-gray-200 text-xl pl-3 pb-2 font-thin">
-          {{ englishName | translate }}
-        </p>
-        <mat-icon
-          class="text-neutral-400 ml-4 mb-3 cursor-pointer"
-          (click)="closeTile()"
-          >clear</mat-icon
-        >
-      </div>
-      <img src="assets/images/{{ englishName }}.jpg" alt="{{ englishName }}" />
+    <div class="bg-black border-2 bg-opacity-70 border-gray-700 rounded-xl">
+        <div class="px-4 py-4 flex flex-col items-evenly">
+            <div class="flex flex-row justify-between items-center">
+                <p class="text-gray-200 text-xl pl-3 pb-2 font-thin">
+                    {{ englishName | translate }}
+                </p>
+                <mat-icon
+                    class="text-neutral-400 ml-4 mb-3 cursor-pointer"
+                    (click)="closeTile()"
+                    >clear</mat-icon
+                >
+            </div>
+            <img src="assets/images/{{ englishName }}.jpg" alt="{{ englishName }}" />
+        </div>
+
+        <mat-tab-group
+            mat-stretch-tabs
+            disableRipple
+            dynamicHeight
+            animationDuration="400ms">
+            <mat-tab label="{{ 'orbitalCharacteristics' | translate }}">
+                <div class="pl-6 py-3">
+                    <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
+                        <p class="text-sky-200 font-normal text-md" matTooltip="xd">
+                            {{ sideralOrbit }}
+                        </p>
+                    </div>
+                    <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
+                        <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
+                            {{ 'lengthOfYear' | translate }}
+                        </p>
+                        <p class="text-sky-200 font-normal text-md">
+                            {{ semimajorAxis }} km
+                        </p>
+                    </div>
+                    <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
+                        <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
+                            {{ 'semiMajorAxis' | translate }}
+                        </p>
+                        <p class="text-sky-200 font-normal text-md">
+                            {{ perihelion }} km
+                        </p>
+                    </div>
+                    <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
+                        <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
+                            {{ 'perihelion' | translate }}
+                        </p>
+                        <p class="text-sky-200 font-normal text-md">{{ aphelion }} km</p>
+                    </div>
+                    <p
+                        class="text-gray-400 font-extralight text-[0.7rem] uppercase cursor-default">
+                        {{ 'aphelion' | translate }}
+                    </p>
+                </div>
+            </mat-tab>
+            <mat-tab label="{{ 'physicalCharacteristics' | translate }}">
+                <div class="pl-6 py-3">
+                    <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
+                        <p class="text-sky-200 font-normal text-md">
+                            {{ sideralRotation }}
+                        </p>
+                    </div>
+                    <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
+                        <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
+                            {{ 'lengthOfDay' | translate }}
+                        </p>
+                        <p class="text-sky-200 font-normal text-md">
+                            {{ averageTemperature }} &deg;C
+                        </p>
+                    </div>
+                    <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
+                        <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
+                            {{ 'averageTemperature' | translate }}
+                        </p>
+                        <p class="text-sky-200 font-normal text-md">
+                            {{ massValue }} &times; 10<sup>{{ massExponent }}</sup> kg
+                        </p>
+                    </div>
+                    <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
+                        <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
+                            {{ 'mass' | translate }}
+                        </p>
+                        <p class="text-sky-200 font-normal text-md">
+                            {{ meanRadius }} km
+                        </p>
+                    </div>
+
+                    <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
+                        <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
+                            {{ 'meanRadius' | translate }}
+                        </p>
+                        <p
+                            class="text-sky-200 font-normal text-md"
+                            *ngIf="moons === undefined">
+                            0
+                        </p>
+                        <p
+                            class="text-sky-200 font-normal text-md"
+                            *ngIf="moons !== undefined">
+                            {{ moons }}
+                        </p>
+                    </div>
+                    <p
+                        class="text-gray-400 font-extralight text-[0.7rem] uppercase cursor-default">
+                        {{ 'moons' | translate }}
+                    </p>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
     </div>
-
-    <mat-tab-group
-      mat-stretch-tabs
-      disableRipple
-      dynamicHeight
-      animationDuration="400ms"
-    >
-      <mat-tab label="{{ 'orbitalCharacteristics' | translate }}">
-        <div class="pl-6 py-3">
-          <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
-            <p class="text-sky-200 font-normal text-md" matTooltip="xd">
-              {{ sideralOrbit }}
-            </p>
-          </div>
-          <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
-            <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
-              {{ "lengthOfYear" | translate }}
-            </p>
-            <p class="text-sky-200 font-normal text-md">
-              {{ semimajorAxis }} km
-            </p>
-          </div>
-          <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
-            <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
-              {{ "semiMajorAxis" | translate }}
-            </p>
-            <p class="text-sky-200 font-normal text-md">{{ perihelion }} km</p>
-          </div>
-          <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
-            <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
-              {{ "perihelion" | translate }}
-            </p>
-            <p class="text-sky-200 font-normal text-md">{{ aphelion }} km</p>
-          </div>
-          <p
-            class="text-gray-400 font-extralight text-[0.7rem] uppercase cursor-default"
-          >
-            {{ "aphelion" | translate }}
-          </p>
-        </div>
-      </mat-tab>
-      <mat-tab label="{{ 'physicalCharacteristics' | translate }}">
-        <div class="pl-6 py-3">
-          <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
-            <p class="text-sky-200 font-normal text-md">
-              {{ sideralRotation }}
-            </p>
-          </div>
-          <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
-            <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
-              {{ "lengthOfDay" | translate }}
-            </p>
-            <p class="text-sky-200 font-normal text-md">
-              {{ averageTemperature }} &deg;C
-            </p>
-          </div>
-          <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
-            <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
-              {{ "averageTemperature" | translate }}
-            </p>
-            <p class="text-sky-200 font-normal text-md">
-              {{ massValue }} &times; 10<sup>{{ massExponent }}</sup> kg
-            </p>
-          </div>
-          <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
-            <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
-              {{ "mass" | translate }}
-            </p>
-            <p class="text-sky-200 font-normal text-md">{{ meanRadius }} km</p>
-          </div>
-
-          <div class="border-b-[1px] border-gray-400 max-w-fit cursor-default">
-            <p class="text-gray-400 font-extralight text-[0.7rem] uppercase">
-              {{ "meanRadius" | translate }}
-            </p>
-            <p
-              class="text-sky-200 font-normal text-md"
-              *ngIf="moons === undefined"
-            >
-              0
-            </p>
-            <p
-              class="text-sky-200 font-normal text-md"
-              *ngIf="moons !== undefined"
-            >
-              {{ moons }}
-            </p>
-          </div>
-          <p
-            class="text-gray-400 font-extralight text-[0.7rem] uppercase cursor-default"
-          >
-            {{ "moons" | translate }}
-          </p>
-        </div>
-      </mat-tab>
-    </mat-tab-group>
-  </div>
 </div>
