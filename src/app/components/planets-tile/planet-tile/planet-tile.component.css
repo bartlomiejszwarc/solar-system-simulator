@@ -17,6 +17,16 @@
         right: 0;
     }
 }
+@media only screen and (max-width: 1000px) and (min-width: 701px) {
+    #position-wrapper {
+        top: 20%;
+        margin: 0 auto;
+        width: 450px;
+        transform: scale(0.9);
+        left: 0;
+        right: 0;
+    }
+}
 @media only screen and (max-width: 376px) {
     #position-wrapper {
         top: 50%;
@@ -27,8 +37,6 @@
         right: 0;
     }
 }
-
-/* TODO: ipads */
 
 img {
     transform: scale(70%);

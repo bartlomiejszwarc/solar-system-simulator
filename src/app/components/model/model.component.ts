@@ -30,7 +30,6 @@ export class ModelComponent implements OnInit {
             { value: 0.5 },
             { value: 1 },
             { value: 7 },
-            { value: 14 },
             { value: 28 },
             { value: 365 }
         ]

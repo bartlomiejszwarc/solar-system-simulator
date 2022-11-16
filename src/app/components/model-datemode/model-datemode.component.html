@@ -1,13 +1,14 @@
 <div
-    class="flex md:flex-row flex-col-reverse bg-black text-white py-4 items-center justify-between">
+    class="flex md:flex-row flex-col-reverse bg-black text-white py-4 items-center justify-between"
+    id="wrap">
     <div class="flex flex-col items-center py-3 md:py-0 space-y-12 md:space-y-10 md:ml-2">
-        <mat-form-field appearance="fill" class="w-full flex flex-col">
+        <mat-form-field appearance="fill" class="w-full flex flex-col" id="wrap-text">
             <div
-                class="flex flex-row justify-around items-center pl-4 p-[2px] rounded-full bg-gradient-to-r from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50">
-                <mat-label *ngIf="datepicker !== undefined">{{
+                class="flex flex-row justify-around items-center pl-3 p-[2px] rounded-full bg-gradient-to-r from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50">
+                <mat-label *ngIf="datepicker !== undefined" class="text-md">{{
                     'chooseDateText' | translate
                 }}</mat-label>
-                <div class="w-0">
+                <div class="hidden">
                     <input
                         matInput
                         [min]="millenium"
@@ -53,7 +54,7 @@
         </mat-form-field>
     </div>
 
-    <div class="flex flex-col md:flex-row justify-center items-center">
+    <div class="flex flex-col md:flex-row justify-center items-center" id="wrap-button">
         <button
             class="w-40 m-4 p-[2px] rounded-full bg-gradient-to-r from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50"
             (click)="dateMode()">

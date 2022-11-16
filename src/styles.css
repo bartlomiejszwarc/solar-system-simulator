@@ -66,6 +66,7 @@ canvas {
         width: 100% !important;
         margin-left: 0 !important;
         padding-left: 0 !important;
+        margin-top: 300px !important;
     }
     .cdk-overlay-container {
         position: relative;
@@ -87,6 +88,7 @@ canvas {
     border-radius: 12px;
     padding: 1rem;
     margin: 0 auto;
+    margin-top: 150px;
 }
 
 .mat-calendar-body-selected {

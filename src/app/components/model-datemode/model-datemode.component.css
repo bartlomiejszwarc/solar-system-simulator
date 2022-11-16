@@ -1,3 +1,21 @@
 * {
     font-family: 'Chakra Petch';
 }
+
+#wrap {
+    position: absolute;
+    margin: 0 auto;
+    top: 10% !important;
+    width: 100% !important;
+    background: transparent;
+}
+@media only screen and (max-width: 376px) {
+    #wrap {
+        top: 15% !important;
+    }
+}
+
+#wrap-button,
+#wrap-text {
+    z-index: 4;
+}
