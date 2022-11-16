@@ -9,7 +9,7 @@
 
 @media only screen and (max-width: 700px) {
     #position-wrapper {
-        top: 37%;
+        top: 40%;
         margin: 0 auto;
         width: 350px;
         transform: scale(0.75);
