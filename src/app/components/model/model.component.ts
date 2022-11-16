@@ -14,6 +14,7 @@ import { Clock } from 'three'
 import { degToRad } from 'three/src/math/MathUtils'
 import { TranslateService } from '@ngx-translate/core'
 import { AppComponent } from 'src/app/app.component'
+import { SharedService } from 'src/app/services/shared.service'
 
 @Component({
     selector: 'app-model',
@@ -61,10 +62,9 @@ export class ModelComponent implements OnInit {
     constructor(
         private dataService: DataService,
         public translate: TranslateService,
-        public app: AppComponent
+        public app: AppComponent,
+        public shared: SharedService
     ) {
-        translate.addLangs(['en', 'pl'])
-
         const interactionManager = new InteractionManager(
             this.renderer,
             this.camera,
@@ -92,9 +92,9 @@ export class ModelComponent implements OnInit {
         })
 
         //Adding light from The Sun
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.015)
+        const ambientLight = new THREE.AmbientLight('white', 0.015)
         //
-        const pointLight = new THREE.PointLight(0xffffff, 1.2137, 3500000)
+        const pointLight = new THREE.PointLight('white', 1.1, 4000)
         this.scene.add(ambientLight)
         this.scene.add(pointLight)
 
@@ -104,6 +104,7 @@ export class ModelComponent implements OnInit {
             planet.addEventListener('click', () => {
                 this.dataService.getPlanetData(planet.name).subscribe((res) => {
                     this.planetName = res
+                    this.shared.setPlanetName(this.planetName)
                     if (res.moons !== null) this.planetName.moons = res.moons.length
                     else {
                         this.planetName.moons = '0'
@@ -128,8 +129,7 @@ export class ModelComponent implements OnInit {
 
         const clock = new Clock()
         let delta = 0
-        // 60 fps
-        const fps = 60
+        const fps = 60 // 60 fps required
         let interval = 1 / fps
 
         //Animation loop
@@ -178,7 +178,11 @@ export class ModelComponent implements OnInit {
         })
     }
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.shared.getPlanetName().subscribe((planetName) => {
+            this.planetName = planetName
+        })
+    }
 
     changeSpeed(value: number) {
         this.globalRotationSpeed = 0.1
@@ -192,8 +196,9 @@ export class ModelComponent implements OnInit {
 
     dateMode() {
         this.app.setMode()
-        this.dateModeFlag = true
         document.body.removeChild(this.renderer.domElement)
         this.renderer.setAnimationLoop(null)
+        this.globalRotationSpeed = 0.1
+        this.globalSpinSpeed = 1
     }
 }

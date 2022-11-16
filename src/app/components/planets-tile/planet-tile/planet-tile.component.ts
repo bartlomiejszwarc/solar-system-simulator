@@ -12,11 +12,7 @@ import { ModelComponent } from '../../model/model.component'
 })
 export class PlanetTileComponent implements OnInit {
     lang!: string
-    constructor(
-        private modelComponent: ModelComponent,
-        public translate: TranslateService,
-        private shared: SharedService
-    ) {}
+    constructor(public translate: TranslateService, private shared: SharedService) {}
 
     @Input() englishName!: string
     @Input() massValue!: string
@@ -31,13 +27,12 @@ export class PlanetTileComponent implements OnInit {
     @Input() sideralOrbit!: string
 
     planetData!: Planet
-    planetName = this.modelComponent.planetName
     orbitalCharacteristic!: string
     physicalCharacteristic!: string
 
     ngOnInit(): void {}
 
     closeTile(): void {
-        this.modelComponent.planetName = undefined!
+        this.shared.setPlanetName(undefined)
     }
 }

@@ -2,109 +2,112 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Oxygen&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
 
 .mat-tab-label {
-  color: #bae6fd;
+    color: #bae6fd;
 }
 
 .mat-tab-label-active {
-  border-bottom: 2px solid #bae6fd;
+    border-bottom: 2px solid #bae6fd;
 }
 
 ngx-slider {
-  margin-left: 2rem !important;
-  margin-right: 2rem !important;
-  width: 100% !important;
+    margin-left: 2rem !important;
+    margin-right: 2rem !important;
+    width: 100% !important;
 }
 .ngx-slider-bar {
-  background-color: #64748b !important;
+    background-color: #64748b !important;
 }
 .ngx-slider-pointer {
-  background-color: #334155 !important;
+    background-color: #334155 !important;
 }
 @media only screen and (max-width: 400px) {
-  ngx-slider {
-    width: 90% !important;
-  }
+    ngx-slider {
+        width: 90% !important;
+    }
 }
 
 @media only screen and (max-width: 800px) {
-  ngx-slider {
-    width: 150%;
-  }
+    ngx-slider {
+        width: 90% !important;
+    }
 }
 
 body {
-  overflow-x: hidden !important;
-  background-color: black;
-}
-
-body {
-  overflow-x: hidden !important;
-  background-color: black;
+    overflow-x: hidden !important;
+    background-color: black;
 }
 
 span.cdk-visually-hidden {
-  display: none;
+    display: none;
 }
 
 .cdk-overlay-container {
-  position: absolute;
-  z-index: 3;
-  margin-left: 1rem;
-  background-color: rgba(0, 0, 0, 0.96);
+    position: absolute;
+    z-index: 3;
+    margin-left: 1rem;
+    background-color: rgba(0, 0, 0, 0.96);
 }
 
 canvas {
-  position: absolute !important;
+    position: absolute !important;
 }
 
 .mat-datepicker-content-container {
-  color: #94a3b8;
-  align-items: center !important;
-  z-index: 3;
+    color: #94a3b8;
+    align-items: center !important;
+    z-index: 3;
 }
 
 @media only screen and (max-width: 400px) {
-  .mat-datepicker-content-container {
-    width: 100% !important;
-    margin-left: 0 !important;
-    padding-left: 0 !important;
-  }
-  .cdk-overlay-container {
-    position: relative;
-    width: 90%;
-  }
+    .mat-datepicker-content-container {
+        width: 100% !important;
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+    }
+    .cdk-overlay-container {
+        position: relative;
+        width: 90%;
+    }
+    canvas {
+        top: 20%;
+    }
+}
+@media only screen and (max-width: 376px) {
+    canvas {
+        top: 50%;
+    }
 }
 
 .mat-datepicker-content-container {
-  background-color: transparent;
-  border: 2px solid #bae6fd;
-  border-radius: 12px;
-  padding: 1rem;
-  margin: 0 auto;
+    background-color: transparent;
+    border: 2px solid #bae6fd;
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 0 auto;
 }
 
 .mat-calendar-body-selected {
-  /* border: 2px solid #7dd3fc !important; */
-  background-color: #0369a1;
-  border: 3px solid #0369a1 !important;
-  color: white;
-  font-weight: 500;
+    /* border: 2px solid #7dd3fc !important; */
+    background-color: #0369a1;
+    border: 3px solid #0369a1 !important;
+    color: white;
+    font-weight: 500;
 }
 
 .mat-datepicker-close-button {
-  display: none !important;
+    display: none !important;
 }
 
 .mat-calendar-body-today {
-  background-color: transparent;
-  border: 3px solid #0369a1 !important;
-  color: white;
-  font-weight: 500;
+    background-color: transparent;
+    border: 3px solid #0369a1 !important;
+    color: white;
+    font-weight: 500;
 }
 
 .mat-calendar-body-cell-content::before {
-  margin: 0 !important;
+    margin: 0 !important;
 }

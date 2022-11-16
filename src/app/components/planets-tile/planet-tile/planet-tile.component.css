@@ -9,7 +9,7 @@
 
 @media only screen and (max-width: 700px) {
     #position-wrapper {
-        top: 45%;
+        top: 37%;
         margin: 0 auto;
         width: 350px;
         transform: scale(0.75);
@@ -17,6 +17,18 @@
         right: 0;
     }
 }
+@media only screen and (max-width: 376px) {
+    #position-wrapper {
+        top: 50%;
+        margin: 0 auto;
+        width: 350px;
+        transform: scale(0.75);
+        left: 0;
+        right: 0;
+    }
+}
+
+/* TODO: ipads */
 
 img {
     transform: scale(70%);

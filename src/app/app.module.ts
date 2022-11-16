@@ -11,7 +11,6 @@ import {
     NgtMeshStandardMaterial
 } from '@angular-three/core/materials'
 import { ModelComponent } from './components/model/model.component'
-import { TestComponent } from './components/test/test.component'
 import { FormsModule } from '@angular/forms'
 import { HttpClient, HttpClientModule } from '@angular/common/http'
 import { PlanetTileComponent } from './components/planets-tile/planet-tile/planet-tile.component'
@@ -34,7 +33,6 @@ import { MatCardModule } from '@angular/material/card'
         AppComponent,
         HeaderComponent,
         ModelComponent,
-        TestComponent,
         PlanetTileComponent,
         ModelDatemodeComponent
     ],

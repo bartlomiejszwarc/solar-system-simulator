@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { Options } from '@angular-slider/ngx-slider'
 import { DataService } from 'src/app/services/data.service'
 import * as PlanetData from 'src/app/helpers/PlanetData'
 import * as PlanetTexture from 'src/app/helpers/PlanetTexture'
@@ -10,13 +9,13 @@ import * as PivotPointDate from 'src/app/helpers/PivotPointDate'
 import * as PlanetOrbit from 'src/app/helpers/PlanetOrbit'
 import { InteractionManager } from 'three.interactive'
 import { Planet } from 'src/app/helpers/Planet'
-import { Clock } from 'three'
-import { degToRad, radToDeg } from 'three/src/math/MathUtils'
+import { degToRad } from 'three/src/math/MathUtils'
 import { TranslateService } from '@ngx-translate/core'
 import { AppComponent } from 'src/app/app.component'
 import { DatePipe } from '@angular/common'
 import * as AE from 'astronomy-engine'
 import * as DateHelper from 'src/app/helpers/Date'
+import { SharedService } from 'src/app/services/shared.service'
 
 @Component({
     selector: 'app-model-datemode',
@@ -44,23 +43,20 @@ export class ModelDatemodeComponent implements OnInit {
     sceneDate = new THREE.Scene()
 
     form: any = {
-        startDate: '',
-        endDate: '',
         singleDate: ''
     }
     pipe = new DatePipe('en-US')
     singleDateFormatted = ''
-
     today: any = JSON.parse(JSON.stringify(this.pipe.transform(new Date(), 'YYYY-MM-dd')))
-
     millenium: Date = new Date('2000/01/02')
+    planetName!: Planet
 
     constructor(
         private dataService: DataService,
         public translate: TranslateService,
-        public app: AppComponent
+        public app: AppComponent,
+        private shared: SharedService
     ) {
-        translate.addLangs(['en', 'pl'])
         const interactionManager = new InteractionManager(
             this.rendererDate,
             this.camera,
@@ -75,22 +71,51 @@ export class ModelDatemodeComponent implements OnInit {
 
         //Creating camera
         this.camera.position.set(250, 250, 250)
-        const orbit = new OrbitControls(this.camera, this.rendererDate.domElement)
+        new OrbitControls(this.camera, this.rendererDate.domElement)
 
         this.sceneDate.background = PlanetTexture.backgroundTextureMap
         //Adding sun to sceneDate
         this.sceneDate.add(PlanetObjectData.sun)
 
         //Adding light from The Sun
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.015)
+        const ambientLight = new THREE.AmbientLight('white', 0.015)
         //
-        const pointLight = new THREE.PointLight(0xffffff, 1.2137, 3500000)
+        const pointLight = new THREE.PointLight('white', 1.1, 4500)
         this.sceneDate.add(ambientLight)
         this.sceneDate.add(pointLight)
 
         PivotPointDate.pivotPointArray.forEach((pivotPoint) => {
             this.sceneDate.add(pivotPoint)
         })
+        //Adding click events to objects and fetching data
+        PlanetObjectData.planets.forEach((planet) => {
+            interactionManager.add(planet)
+            planet.addEventListener('click', () => {
+                this.dataService.getPlanetData(planet.name).subscribe((res) => {
+                    this.planetName = res
+                    this.shared.setPlanetName(this.planetName)
+                    if (res.moons !== null) this.planetName.moons = res.moons.length
+                    else {
+                        this.planetName.moons = '0'
+                    }
+                    this.planetName.massValue = res.mass.massValue
+                    this.planetName.massExponent = res.mass.massExponent
+                    this.planetName.avgTemp = (res.avgTemp - 272.15).toFixed(1)
+
+                    this.planetName.sideralOrbit = res.sideralOrbit.toFixed(1) + ' d'
+
+                    //TODO: days/years
+                    if (Math.abs(res.sideralRotation) > 24) {
+                        this.planetName.sideralRotation =
+                            (Math.abs(res.sideralRotation) / 24).toFixed(2) + ' d'
+                    } else {
+                        this.planetName.sideralRotation =
+                            Math.abs(res.sideralRotation).toFixed(2) + ' h'
+                    }
+                })
+            })
+        })
+
         for (var i = 0; i < PlanetObjectData.planets.length; i++) {
             PlanetObjectData.planets[i].position.set(PlanetData.distancesArray[i], 0, 0)
         }
@@ -110,7 +135,11 @@ export class ModelDatemodeComponent implements OnInit {
         })
     }
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.shared.getPlanetName().subscribe((planetName) => {
+            this.planetName = planetName
+        })
+    }
 
     dateMode() {
         this.app.setMode()
@@ -138,7 +167,6 @@ export class ModelDatemodeComponent implements OnInit {
                 AE.EclipticLongitude(PivotPointDate.planetBody[i], date)
             )
         }
-
         this.rendererDate.render(this.sceneDate, this.camera)
     }
 }

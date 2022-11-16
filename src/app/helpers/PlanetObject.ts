@@ -19,14 +19,14 @@ export const venus = new THREE.Mesh(
     PlanetMaterial.venusMaterial
 )
 venus.name = 'Venus'
-venus.rotateZ(degToRad(PlanetData.venusTilt))
+//venus.rotateZ(degToRad(PlanetData.venusTilt))
 
 export const earth = new THREE.Mesh(
     PlanetGeometry.earthGeometry,
     PlanetMaterial.earthMaterial
 )
 earth.name = 'Earth'
-earth.rotateZ(degToRad(PlanetData.earthTilt))
+//earth.rotateZ(degToRad(PlanetData.earthTilt))
 
 export const moon = new THREE.Mesh(
     PlanetGeometry.moonGeometry,
@@ -38,14 +38,14 @@ export const mars = new THREE.Mesh(
     PlanetMaterial.marsMaterial
 )
 mars.name = 'Mars'
-mars.rotateZ(degToRad(PlanetData.marsTilt))
+//mars.rotateZ(degToRad(PlanetData.marsTilt))
 
 export const jupiter = new THREE.Mesh(
     PlanetGeometry.jupiterGeometry,
     PlanetMaterial.jupiterMaterial
 )
 jupiter.name = 'Jupiter'
-jupiter.rotateZ(degToRad(PlanetData.jupiterTilt))
+//jupiter.rotateZ(degToRad(PlanetData.jupiterTilt))
 
 export const saturn = new THREE.Mesh(
     PlanetGeometry.saturnGeometry,
@@ -66,13 +66,13 @@ export const uranus = new THREE.Mesh(
     PlanetMaterial.uranusMaterial
 )
 uranus.name = 'Uranus'
-uranus.rotateZ(degToRad(PlanetData.uranusTilt))
+//uranus.rotateZ(degToRad(PlanetData.uranusTilt))
 
 export const neptune = new THREE.Mesh(
     PlanetGeometry.neptuneGeometry,
     PlanetMaterial.neptuneMaterial
 )
 neptune.name = 'Neptune'
-neptune.rotateZ(degToRad(PlanetData.neptuneTilt))
+//neptune.rotateZ(degToRad(PlanetData.neptuneTilt))
 
 export let planets = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune]

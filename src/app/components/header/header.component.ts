@@ -9,10 +9,7 @@ import { SharedService } from 'src/app/services/shared.service'
 })
 export class HeaderComponent implements OnInit {
     language!: string
-    constructor(
-        private shared: SharedService,
-        public translate: TranslateService
-    ) {}
+    constructor(private shared: SharedService, public translate: TranslateService) {}
 
     ngOnInit(): void {
         if (localStorage.getItem('lang'))

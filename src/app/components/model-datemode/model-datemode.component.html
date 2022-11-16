@@ -81,16 +81,16 @@
     </div>
 </div>
 <app-planet-tile
-    *ngIf="planetNameData"
-    englishName="{{ planetNameData.englishName }}"
-    massValue="{{ planetNameData.massValue }}"
-    massExponent="{{ planetNameData.massExponent }}"
-    meanRadius="{{ planetNameData.meanRadius }}"
-    averageTemperature="{{ planetNameData.avgTemp }}"
-    moons="{{ planetNameData.moons }}"
-    sideralRotation="{{ planetNameData.sideralRotation }}"
-    perihelion="{{ planetNameData.perihelion }}"
-    aphelion="{{ planetNameData.aphelion }}"
-    semimajorAxis="{{ planetNameData.semimajorAxis }}"
-    sideralOrbit="{{ planetNameData.sideralOrbit }}">
+    *ngIf="planetName !== undefined"
+    englishName="{{ planetName.englishName }}"
+    massValue="{{ planetName.massValue }}"
+    massExponent="{{ planetName.massExponent }}"
+    meanRadius="{{ planetName.meanRadius }}"
+    averageTemperature="{{ planetName.avgTemp }}"
+    moons="{{ planetName.moons }}"
+    sideralRotation="{{ planetName.sideralRotation }}"
+    perihelion="{{ planetName.perihelion }}"
+    aphelion="{{ planetName.aphelion }}"
+    semimajorAxis="{{ planetName.semimajorAxis }}"
+    sideralOrbit="{{ planetName.sideralOrbit }}">
 </app-planet-tile>
