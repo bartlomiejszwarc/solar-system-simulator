@@ -61,7 +61,7 @@ canvas {
     z-index: 3;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 550px) {
     .mat-datepicker-content-container {
         width: 100% !important;
         margin-left: 0 !important;
@@ -76,6 +76,11 @@ canvas {
         top: 20%;
     }
 }
+@media only screen and (min-width: 551px) and (max-width: 1000px) {
+    .mat-datepicker-content-container {
+        margin-top: 175px !important;
+    }
+}
 @media only screen and (max-width: 376px) {
     canvas {
         top: 50%;
@@ -87,16 +92,18 @@ canvas {
     border: 2px solid #bae6fd;
     border-radius: 12px;
     padding: 1rem;
-    margin: 0 auto;
     margin-top: 150px;
 }
 
 .mat-calendar-body-selected {
-    /* border: 2px solid #7dd3fc !important; */
     background-color: #0369a1;
     border: 3px solid #0369a1 !important;
-    color: white;
+    color: white !important;
     font-weight: 500;
+}
+.mat-calendar-body-cell-content {
+    border: 0 transparent solid;
+    color: #64748b;
 }
 
 .mat-datepicker-close-button {
@@ -105,7 +112,7 @@ canvas {
 
 .mat-calendar-body-today {
     background-color: transparent;
-    border: 3px solid #0369a1 !important;
+    border: 2px solid #0369a1 !important;
     color: white;
     font-weight: 500;
 }

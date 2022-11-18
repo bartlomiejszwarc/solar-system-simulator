@@ -25,7 +25,6 @@ export const venusTextureMap = new THREE.TextureLoader().load(
 export const earthTextureMap = new THREE.TextureLoader().load(
     'assets/textures/earth-texture.jpg'
 )
-
 export const marsTextureMap = new THREE.TextureLoader().load(
     'assets/textures/mars-texture.jpg'
 )
@@ -35,7 +34,6 @@ export const jupiterTextureMap = new THREE.TextureLoader().load(
 export const moonTextureMap = new THREE.TextureLoader().load(
     'assets/textures/moon-texture.jpg'
 )
-
 export const saturnTextureMap = new THREE.TextureLoader().load(
     'assets/textures/saturn-texture.jpg'
 )

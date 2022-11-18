@@ -19,7 +19,7 @@
 }
 @media only screen and (max-width: 1000px) and (min-width: 701px) {
     #position-wrapper {
-        top: 20%;
+        top: 30%;
         margin: 0 auto;
         width: 450px;
         transform: scale(0.9);

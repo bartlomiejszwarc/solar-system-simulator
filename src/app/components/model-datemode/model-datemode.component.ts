@@ -35,7 +35,7 @@ export class ModelDatemodeComponent implements OnInit {
     })
 
     camera = new THREE.PerspectiveCamera(
-        45,
+        50,
         window.innerWidth / window.innerHeight,
         10,
         30000
@@ -47,7 +47,8 @@ export class ModelDatemodeComponent implements OnInit {
     }
     pipe = new DatePipe('en-US')
     singleDateFormatted = ''
-    today: any = JSON.parse(JSON.stringify(this.pipe.transform(new Date(), 'YYYY-MM-dd')))
+    singleDateFormattedInverse = ''
+    today: any = JSON.parse(JSON.stringify(this.pipe.transform(new Date(), 'dd-MM-YYYY')))
     millenium: Date = new Date('2000/01/02')
     planetName!: Planet
 
@@ -70,7 +71,7 @@ export class ModelDatemodeComponent implements OnInit {
         document.body.appendChild(this.rendererDate.domElement)
 
         //Creating camera
-        this.camera.position.set(250, 250, 250)
+        this.camera.position.set(0, 300, 250)
         new OrbitControls(this.camera, this.rendererDate.domElement)
 
         this.sceneDate.background = PlanetTexture.backgroundTextureMap
@@ -139,6 +140,17 @@ export class ModelDatemodeComponent implements OnInit {
         this.shared.getPlanetName().subscribe((planetName) => {
             this.planetName = planetName
         })
+        for (let i = 0; i < PivotPointDate.pivotPointArray.length; i++) {
+            PivotPointDate.pivotPointArray[i].rotation.y = 0
+            PivotPointDate.pivotPointArray[i].rotation.z = 0
+            PivotPointDate.pivotPointArray[i].rotation.x = 0
+            PivotPointDate.pivotPointArray[i].rotation.y = degToRad(
+                AE.EclipticLongitude(
+                    PivotPointDate.planetBody[i],
+                    DateHelper.daysSinceMilleniumFromToday(new Date())
+                )
+            )
+        }
     }
 
     dateMode() {
@@ -152,6 +164,9 @@ export class ModelDatemodeComponent implements OnInit {
     catchDate() {
         this.singleDateFormatted = JSON.parse(
             JSON.stringify(this.pipe.transform(this.form.singleDate, 'YYYY-MM-dd'))
+        )
+        this.singleDateFormattedInverse = JSON.parse(
+            JSON.stringify(this.pipe.transform(this.form.singleDate, 'dd-MM-YYYY'))
         )
         let singleDate = DateHelper.daysSinceMilleniumFromDate(
             new Date(this.singleDateFormatted)

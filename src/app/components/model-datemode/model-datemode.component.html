@@ -3,34 +3,39 @@
     id="wrap">
     <div class="flex flex-col items-center py-3 md:py-0 space-y-12 md:space-y-10 md:ml-2">
         <mat-form-field appearance="fill" class="w-full flex flex-col" id="wrap-text">
-            <div
-                class="flex flex-row justify-around items-center pl-3 p-[2px] rounded-full bg-gradient-to-r from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50">
-                <mat-label *ngIf="datepicker !== undefined" class="text-md">{{
-                    'chooseDateText' | translate
-                }}</mat-label>
-                <div class="hidden">
-                    <input
-                        matInput
-                        [min]="millenium"
-                        [matDatepicker]="datepicker"
-                        name="singleDate"
-                        [(ngModel)]="form.singleDate"
-                        #singleDate="ngModel" />
+            <div class="flex flex-col items-center">
+                <div
+                    class="flex flex-row justify-around items-center pl-3 p-[2px] rounded-full bg-gradient-to-r from-sky-900 to-slate-600 hover:shadow-lg hover:shadow-slate-500/5 transition ease-in-out delay-50">
+                    <mat-label
+                        *ngIf="datepicker !== undefined"
+                        class="text-md pl-2 pr-1"
+                        >{{ 'chooseDateText' | translate }}</mat-label
+                    >
+                    <div class="hidden">
+                        <input
+                            matInput
+                            [min]="millenium"
+                            [matDatepicker]="datepicker"
+                            name="singleDate"
+                            [(ngModel)]="form.singleDate"
+                            #singleDate="ngModel" />
+                    </div>
+                    <mat-datepicker-toggle
+                        matSuffix
+                        [for]="datepicker"
+                        class="datepicker-toggle-button"></mat-datepicker-toggle>
                 </div>
-                <mat-datepicker-toggle
-                    matSuffix
-                    [for]="datepicker"
-                    class="datepicker-toggle-button"></mat-datepicker-toggle>
+                <p
+                    *ngIf="
+                        singleDateFormattedInverse === '' || singleDateFormatted === null
+                    "
+                    class="pt-2">
+                    {{ today }}
+                </p>
+                <p *ngIf="singleDateFormattedInverse !== ''" class="pt-2">
+                    {{ singleDateFormattedInverse }}
+                </p>
             </div>
-            <p
-                *ngIf="singleDateFormatted === '' || singleDateFormatted === null"
-                class="pl-10 pt-2">
-                {{ today }}
-            </p>
-            <p *ngIf="singleDateFormatted !== ''" class="pl-10 pt-2">
-                {{ singleDateFormatted }}
-            </p>
-
             <mat-datepicker #datepicker>
                 <mat-datepicker-actions>
                     <div class="w-72 mt-4 flex flex-row justify-end space-x-2">

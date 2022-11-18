@@ -5,13 +5,18 @@
 #wrap {
     position: absolute;
     margin: 0 auto;
-    top: 10% !important;
+    top: 5% !important;
     width: 100% !important;
     background: transparent;
 }
 @media only screen and (max-width: 376px) {
     #wrap {
         top: 15% !important;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    #wrap {
+        top: 10% !important;
     }
 }
 
